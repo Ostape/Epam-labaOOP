@@ -75,4 +75,8 @@ public class BouquetService {
             System.out.println(bouquet.getAccessories());
         }
     }
+
+    public void removeFlowers(){
+        bouquet.getFlowers().clear();
+    }
 }
