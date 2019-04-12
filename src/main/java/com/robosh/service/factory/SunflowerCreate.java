@@ -9,6 +9,6 @@ public class SunflowerCreate implements CreateFlower {
     @Override
     public Flower createFlower() {
         return new FlowerSunflower(FlowersColor.YELLOW, RandomValues.rand(30, 60),
-                RandomValues.rand(0,100),1000);
+                RandomValues.rand(0,100),80, 1000);
     }
 }

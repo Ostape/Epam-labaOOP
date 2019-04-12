@@ -9,6 +9,6 @@ public class RoseCreate implements CreateFlower {
     @Override
     public Flower createFlower() {
         return new FlowerRose(FlowersColor.RED, RandomValues.rand(20,40),
-                RandomValues.rand(0,100),20);
+                RandomValues.rand(0,100),120, 20);
     }
 }

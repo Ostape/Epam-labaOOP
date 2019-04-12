@@ -9,6 +9,6 @@ public class TulipCreate implements CreateFlower {
     @Override
     public Flower createFlower() {
         return new FlowerTulip(FlowersColor.WHITE, RandomValues.rand(12,30),
-                RandomValues.rand(0,100), 5);
+                RandomValues.rand(0,100), 45,5);
     }
 }

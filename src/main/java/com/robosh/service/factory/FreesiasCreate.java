@@ -9,6 +9,6 @@ public class FreesiasCreate implements CreateFlower {
     @Override
     public Flower createFlower() {
         return new FlowerFreesias(FlowersColor.BLUE, RandomValues.rand(12, 20),
-                RandomValues.rand(0,100));
+                RandomValues.rand(0,100), 100);
     }
 }
