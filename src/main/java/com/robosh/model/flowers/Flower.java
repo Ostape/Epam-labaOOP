@@ -22,6 +22,7 @@ public abstract class Flower {
         this.lengthStem = lengthStem;
         this.color = color;
         this.freshness = fleshness;
+        this.flowersPrice = flowersPrice;
     }
 
     public double getFreshness() {

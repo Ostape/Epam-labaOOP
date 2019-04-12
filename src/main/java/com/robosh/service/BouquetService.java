@@ -42,7 +42,7 @@ public class BouquetService {
 
     private void summarizingCostOfBouquet(){
         double sum = 0;
-        if (bouquet.getFlowers().isEmpty()) {
+        if (!bouquet.getFlowers().isEmpty()) {
             for (Flower flower : bouquet.getFlowers()) {
                 sum += flower.getFlowersPrice();
             }
@@ -58,10 +58,6 @@ public class BouquetService {
         return bouquet.getSumCosts();
     }
 
-    public static Bouquet getBouquet(){
-        return bouquet;
-    }
-
     public void setBouquetAccessesories(Accessories accessesories){
         bouquet.setAccessories(accessesories);
     }
@@ -70,8 +66,13 @@ public class BouquetService {
         return bouquet.getFlowers();
     }
 
-    public void clearBouquet(){
-        bouquet = new Bouquet();
+    public void showBouquet(){
+        System.out.println("Bouquet consist of");
+        for (Flower flower : bouquet.getFlowers()){
+            System.out.println(flower);
+        }
+        if (bouquet.getAccessories() != null){
+            System.out.println(bouquet.getAccessories());
+        }
     }
-
 }
