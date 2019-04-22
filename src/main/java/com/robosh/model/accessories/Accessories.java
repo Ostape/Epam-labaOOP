@@ -6,7 +6,8 @@ public enum Accessories {
     BASKET(250);
 
     private double costs;
-    Accessories(double costs){
+
+    Accessories(double costs) {
         this.costs = costs;
     }
 
@@ -14,4 +15,3 @@ public enum Accessories {
         return costs;
     }
 }
-

@@ -10,8 +10,8 @@ import java.util.List;
 public class BouquetService {
     private static Bouquet bouquet = new Bouquet();
 
-    public  void addFlowers(String name, int count) {
-        if (count <= 0){
+    public void addFlowers(String name, int count) {
+        if (count <= 0) {
             throw new IllegalArgumentException();
         }
         CreateFlower maker = createFlowerate(name);
@@ -21,8 +21,8 @@ public class BouquetService {
         }
     }
 
-    private CreateFlower createFlowerate(String name){
-        switch (name){
+    private CreateFlower createFlowerate(String name) {
+        switch (name) {
             case "rose":
                 return new RoseCreate();
 
@@ -35,14 +35,14 @@ public class BouquetService {
             case "freesias":
                 return new FreesiasCreate();
 
-                default:
-                    throw new RuntimeException("No such flower in the shop");
+            default:
+                throw new RuntimeException("No such flower in the shop");
         }
     }
 
-    private void summarizingCostOfBouquet(){
+    private void summarizingCostOfBouquet() {
         double sum = 0;
-        if (!bouquet.getFlowers().isEmpty()) {
+        if (flowersNotEmpty()) {
             for (Flower flower : bouquet.getFlowers()) {
                 sum += flower.getFlowersPrice();
             }
@@ -53,30 +53,35 @@ public class BouquetService {
         bouquet.setSumCosts(sum);
     }
 
-    public double getBouquetCosts(){
+    private boolean flowersNotEmpty() {
+        return !bouquet.getFlowers().isEmpty();
+    }
+
+    public double getBouquetCosts() {
         summarizingCostOfBouquet();
         return bouquet.getSumCosts();
     }
 
-    public void setBouquetAccessesories(Accessories accessesories){
+    public void setBouquetAccessesories(Accessories accessesories) {
         bouquet.setAccessories(accessesories);
     }
 
-    public List<Flower> getAllFlowers(){
+    public List<Flower> getAllFlowers() {
         return bouquet.getFlowers();
     }
 
-    public void showBouquet(){
-        System.out.println("Bouquet consist of");
-        for (Flower flower : bouquet.getFlowers()){
-            System.out.println(flower);
+    public String showBouquet() {
+        StringBuilder bouquetAppearance = new StringBuilder("Bouquet consist of\n");
+        for (Flower flower : bouquet.getFlowers()) {
+            bouquetAppearance.append(flower).append('\n');
         }
-        if (bouquet.getAccessories() != null){
-            System.out.println(bouquet.getAccessories());
+        if (bouquet.getAccessories() != null) {
+            bouquetAppearance.append(bouquet.getAccessories()).append('\n');
         }
+        return bouquetAppearance.toString();
     }
 
-    public void removeFlowers(){
+    void removeFlowers() {
         bouquet.getFlowers().clear();
     }
 }

@@ -4,7 +4,7 @@ public class FlowerTulip extends Flower {
 
     private int numbersOfLeafs;
 
-    public FlowerTulip(FlowersColor color, double lengthStem, double fleshness, double flowersPrice,int numbersOfLeafs) {
+    public FlowerTulip(FlowersColor color, double lengthStem, double fleshness, double flowersPrice, int numbersOfLeafs) {
         super(color, lengthStem, fleshness, flowersPrice);
         this.numbersOfLeafs = numbersOfLeafs;
     }

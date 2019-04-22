@@ -17,7 +17,7 @@ public class MainInterface {
         new MainInterface().control();
     }
 
-    private void mainMenu(){
+    private void mainMenu() {
         System.out.println("Now you can choose the action");
         System.out.println("1. Make an order");
         System.out.println("2. Show a bouquet and its price");
@@ -27,24 +27,23 @@ public class MainInterface {
         System.out.println("Please choose a number of action");
     }
 
-    private void secondMenu(){
+    private void secondMenu() {
         System.out.println("1. Add flowers");
         System.out.println("2. Add accessories");
         System.out.println("3. Return to main menu");
         System.out.println("Please choose a number of action");
     }
 
-    private void control(){
+    private void control() {
         int numberAction;
         do {
             mainMenu();
             numberAction = Input.checkIntegerValue();
-        }while (action(numberAction));
+        } while (action(numberAction));
     }
 
-
-    private boolean action(int numberAction){
-        switch (numberAction){
+    private boolean action(int numberAction) {
+        switch (numberAction) {
             case 1:
                 screenLine();
                 secondMenu();
@@ -79,32 +78,33 @@ public class MainInterface {
         return true;
     }
 
-    private void makingOrder(){
-        boolean flag = true;
+    private void makingOrder() {
+        boolean notMadeOrder = true;
         do {
             int secondAction = Input.checkIntegerValue();
-            switch (secondAction){
+            switch (secondAction) {
                 case 1:
                     createBouquet();
-                    flag = false;
+                    notMadeOrder = false;
                     break;
 
                 case 2:
                     System.out.println("Enter the accessory: ");
                     getAccessories();
                     bouquetService.setBouquetAccessesories(accessories);
-                    flag = false;
+                    notMadeOrder = false;
                     break;
 
                 case 3:
-                    flag = false;
+                    //return to previous menu
+                    notMadeOrder = false;
                     break;
 
                 default:
                     System.out.println("No such action, please try one more");
                     break;
             }
-        }while (flag);
+        } while (notMadeOrder);
     }
 
     private void createBouquet() {
@@ -123,39 +123,41 @@ public class MainInterface {
         System.out.println();
     }
 
-    private void getAccessories(){
+    private void getAccessories() {
+        boolean noSuchAccessories = true;
         do {
+
             try {
-                accessories =  Accessories.valueOf(Input.inputString().toUpperCase());
-                break;
-            } catch(IllegalArgumentException e) {
+                accessories = Accessories.valueOf(Input.inputString().toUpperCase());
+                noSuchAccessories = false;
+            } catch (IllegalArgumentException e) {
                 System.out.println("No such accessory in the shop!");
                 e.getMessage();
             }
         }
-        while (true);
+        while (noSuchAccessories);
     }
 
-    private void showBouquetAndPrice(){
-        bouquetService.showBouquet();
+    private void showBouquetAndPrice() {
+        System.out.println(bouquetService.showBouquet());
         System.out.println("and it`s price is: " + bouquetService.getBouquetCosts());
     }
 
-    private void showGivenRangeLengthStems(){
+    private void showGivenRangeLengthStems() {
         System.out.println("Input the range you`d like to find");
         System.out.println("Enter 'from': ");
         double from = Input.checkDoubleValue();
         System.out.println("Enter 'to': ");
         double to = Input.checkDoubleValue();
 
-        for (Flower flower : bouquetService.getAllFlowers()){
-            if (flower.getLengthStem() >= from && flower.getLengthStem() <= to){
+        for (Flower flower : bouquetService.getAllFlowers()) {
+            if (flower.getLengthStem() >= from && flower.getLengthStem() <= to) {
                 System.out.println(flower);
             }
         }
     }
 
-    private void showSortedFlowers(){
+    private void showSortedFlowers() {
         bouquetService.getAllFlowers().sort(new FreshnessComporator());
         bouquetService.getAllFlowers().forEach(System.out::println);
     }

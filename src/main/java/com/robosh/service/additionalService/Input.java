@@ -6,29 +6,29 @@ import java.util.Scanner;
 public class Input {
     private static Scanner scan = new Scanner(System.in).useLocale(Locale.US);
 
-    public static double checkDoubleValue(){
+    public static double checkDoubleValue() {
         double number;
         while (!scan.hasNextDouble()) {
             scan.nextLine();
             System.out.println("You should enter numbers!");
         }
-        number =  scan.nextDouble();
+        number = scan.nextDouble();
         scan.nextLine();
         return number;
     }
 
-    public static int checkIntegerValue(){
+    public static int checkIntegerValue() {
         int number;
         while (!scan.hasNextInt()) {
             scan.nextLine();
             System.out.println("You should enter numbers!");
         }
-        number =  scan.nextInt();
+        number = scan.nextInt();
         scan.nextLine();
         return number;
     }
 
-    public static String inputString(){
+    public static String inputString() {
         return scan.nextLine();
     }
 
